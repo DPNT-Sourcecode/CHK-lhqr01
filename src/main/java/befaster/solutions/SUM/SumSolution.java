@@ -16,7 +16,7 @@ public class SumSolution {
         //Validate the parameters
         validateInputValue(x, mininumValueToValidate, maxValueToValidate);
         validateInputValue(y, mininumValueToValidate, maxValueToValidate);
-        
+
         return x + y;
     }
 
@@ -30,6 +30,7 @@ public class SumSolution {
     }
 
 }
+
 
 
 
