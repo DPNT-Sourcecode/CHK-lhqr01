@@ -55,7 +55,7 @@ public class CheckoutSolution {
                 total += specialOfferCount * offer.getPrice() + remainCount * prices.get(sku);
 
                 if (offer.getFreeItem() != 0) {
-                    int freeItemCount = Math.min(skuCounts.getOrDefault(offer.getFreeItem(), 0 ), specialOfferCount);
+                    int freeItemCount =specialOfferCount * offer.getQuantity();
                     skuCounts.put(offer.getFreeItem(), skuCounts.getOrDefault(offer.getFreeItem(), 0) - freeItemCount);
                 }
             } else {
@@ -74,29 +74,14 @@ public class CheckoutSolution {
         private int price;
         private char freeItem;
 
-        private int requiredQuantity;
 
         /**
          * Creates a special offer given the quantity and price.
          *
-         * @param requiredQuantity required quant for discount
          * @param quantity quantity of the Offer sku
          * @param price    price of the Offer sku
          * @param freeItem free Item
          */
-        public SpecialOffer(final int requiredQuantity, final int quantity, final int price, final char freeItem) {
-            this.requiredQuantity = requiredQuantity;
-            this.quantity = quantity;
-            this.price = price;
-            this.freeItem = freeItem;
-        }
-
-        public SpecialOffer(final int requiredQuantity, final int quantity, final int price) {
-            this.requiredQuantity = requiredQuantity;
-            this.quantity = quantity;
-            this.price = price;
-            this.freeItem = 0;
-        }
         public SpecialOffer(final int quantity, final int price, final char freeItem) {
             this.quantity = quantity;
             this.price = price;
@@ -105,6 +90,7 @@ public class CheckoutSolution {
         public SpecialOffer(final int quantity, final int price) {
             this.quantity = quantity;
             this.price = price;
+            this.freeItem = 0;
         }
 
         public int getQuantity() {
@@ -120,3 +106,4 @@ public class CheckoutSolution {
         }
     }
 }
+
