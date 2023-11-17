@@ -23,11 +23,13 @@ public class SumSolution {
      * @return
      */
     private int validateInputValue(final int numToCheck) {
-        String result=(numToCheck >0 && numToCheck < 100) ? "The number " + numToCheck + "is valid"
-                : "The number " + numToCheck + "is not valid";
+        return (numToCheck >0 && numToCheck < 100) ? 0 : throw new IllegalArgumentException("Input must be a positive integer between 0 and 100");
+
+
     }
 
 }
+
 
 
 
