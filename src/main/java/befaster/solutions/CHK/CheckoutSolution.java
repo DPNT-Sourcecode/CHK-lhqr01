@@ -22,10 +22,24 @@ public class CheckoutSolution {
     }
 
     public Integer checkout(final String skus) {
+        // The basket is empty
+        if (skus == null || skus.isEmpty()) {
+            return 0;
+        }
 
-        if (skus == null || items.isEmpty()) 
+        Map<Character, Integer> itemCounts = new HashMap<>();
 
+        for (char sku : skus.toCharArray()) {
+            //Illegal input
+            if (!prices.containsKey(sku)) {
+                return -1;
+            }
 
+            itemCounts.put(sku, itemCounts.getOrDefault(sku, 0) + 1);
+        }
+
+        
     }
 }
+
 
