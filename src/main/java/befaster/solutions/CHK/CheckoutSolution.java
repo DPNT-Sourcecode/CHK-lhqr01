@@ -19,7 +19,7 @@ public class CheckoutSolution {
         prices.put('E', 40);
 
         specialOffers.put('A', new SpecialOffer(3, 1, 130));
-        specialOffers.put('B', new SpecialOffer(2, 45, ));
+        specialOffers.put('B', new SpecialOffer(2, 1, 45 ));
         specialOffers.put('E', new SpecialOffer(2,40,'B'));
     }
 
@@ -91,6 +91,12 @@ public class CheckoutSolution {
             this.freeItem = freeItem;
         }
 
+        public SpecialOffer(final int requiredQuantity, final int quantity, final int price) {
+            this.requiredQuantity = requiredQuantity;
+            this.quantity = quantity;
+            this.price = price;
+            this.freeItem = 0;
+        }
         public SpecialOffer(final int quantity, final int price, final char freeItem) {
             this.quantity = quantity;
             this.price = price;
@@ -114,6 +120,7 @@ public class CheckoutSolution {
         }
     }
 }
+
 
 
 
