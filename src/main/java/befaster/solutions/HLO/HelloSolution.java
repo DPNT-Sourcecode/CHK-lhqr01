@@ -8,8 +8,9 @@ public class HelloSolution {
      * @return Reply string
      */
     public String hello(final String friendName) {
-        return "Hello, World!" + friendName;
+        return "Hello, World!";
 
     }
 }
+
 
