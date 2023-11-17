@@ -3,6 +3,7 @@ package befaster.solutions.CHK;
 import befaster.runner.SolutionNotImplementedException;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class CheckoutSolution {
@@ -49,18 +50,24 @@ public class CheckoutSolution {
             int finalValue = entry.getValue();
 
             if (specialOffers.containsKey(sku)) {
-                SpecialOffer offer = specialOffers.get(sku);
-                int specialOfferCount = finalValue / offer.getQuantity();
-                int remainCount = finalValue % offer.getQuantity();
+                List<SpecialOffer> offers = specialOffers.get(sku);
+                int remaining = finalValue;
 
-                total += specialOfferCount * offer.getPrice();
+                for (SpecialOffer offer : offers) {
+                    int specialOfferCount = remaining / offer.getQuantity();
+                    int offerItemsCount = specialOfferCount * offer.getQuantity();
 
-                if (offer.getFreeItem() != 0) {
-                    int freeItemCount = Math.min(skuCounts.getOrDefault(offer.getFreeItem(), 0), specialOfferCount);
-                    total += freeItemCount * prices.get(offer.getFreeItem());
+                    total += specialOfferCount * offer.getPrice();
+
+                    if (offer.getFreeItem() != 0) {
+                        int freeItemCount = Math.min(skuCounts.getOrDefault(offer.getFreeItem(), 0), specialOfferCount);
+                        total += freeItemCount * prices.get(offer.getFreeItem());
+                    }
+
+                    remaining -= offerItemsCount;
                 }
 
-                total += remainCount * prices.get(sku);
+                total += remaining * prices.get(sku);
             } else {
                 total += finalValue * prices.get(sku);
             }
@@ -109,6 +116,7 @@ public class CheckoutSolution {
         }
     }
 }
+
 
 
 
