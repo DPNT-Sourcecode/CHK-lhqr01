@@ -18,8 +18,8 @@ public class CheckoutSolution {
         prices.put('D', 15);
         prices.put('E', 40);
 
-        specialOffers.put('A', new SpecialOffer(3, 130));
-        specialOffers.put('B', new SpecialOffer(2, 45, 'B', 1));
+        specialOffers.put('A', new SpecialOffer(3, 1, 130));
+        specialOffers.put('B', new SpecialOffer(2, 45, ));
         specialOffers.put('E', new SpecialOffer(2,40,'B'));
     }
 
@@ -74,20 +74,28 @@ public class CheckoutSolution {
         private int price;
         private char freeItem;
 
+        private int requiredQuantity;
+
         /**
          * Creates a special offer given the quantity and price.
          *
+         * @param requiredQuantity required quant for discount
          * @param quantity quantity of the Offer sku
          * @param price    price of the Offer sku
          * @param freeItem free Item
          */
-        public SpecialOffer(final int quantity, final int price, final char freeItem) {
+        public SpecialOffer(final int requiredQuantity, final int quantity, final int price, final char freeItem) {
+            this.requiredQuantity = requiredQuantity;
             this.quantity = quantity;
             this.price = price;
             this.freeItem = freeItem;
         }
 
-
+        public SpecialOffer(final int quantity, final int price, final char freeItem) {
+            this.quantity = quantity;
+            this.price = price;
+            this.freeItem = freeItem;
+        }
         public SpecialOffer(final int quantity, final int price) {
             this.quantity = quantity;
             this.price = price;
@@ -106,6 +114,7 @@ public class CheckoutSolution {
         }
     }
 }
+
 
 
 
