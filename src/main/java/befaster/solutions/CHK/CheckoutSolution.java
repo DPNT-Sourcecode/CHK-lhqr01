@@ -48,7 +48,7 @@ public class CheckoutSolution {
             if (specialOffers.containsKey(sku)) {
                 SpecialOffer offer = specialOffers.get(sku);
                 int specialOfferCount = finalValue / offer.getQuantity();
-                int remainCount = finalValue % offer.getQuantity();
+                int remainCount = finalValue - specialOfferCount * offer.getQuantity();
 
                 total += specialOfferCount * offer.getPrice() + remainCount * prices.get(sku);
             } else {
@@ -87,6 +87,7 @@ public class CheckoutSolution {
         }
     }
 }
+
 
 
 
