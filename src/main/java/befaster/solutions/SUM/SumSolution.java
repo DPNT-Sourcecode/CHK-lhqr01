@@ -11,24 +11,26 @@ public class SumSolution {
      * @return
      */
     public int compute(final int x, final int y) {
+        int mininumValueToValidate = 0;
+        int maxValueToValidate = 100;
         //Validate the parameters
-        validateInputValue(x);
-        validateInputValue(y);
-
+        validateInputValue(x, mininumValueToValidate, maxValueToValidate);
+        validateInputValue(y, mininumValueToValidate, maxValueToValidate);
+        
         return x + y;
-        throw new SolutionNotImplementedException();
     }
 
     /**
-     * @return
+     * @param numToCheck Number to be validated
      */
-    private int validateInputValue(final int numToCheck) {
-        return (numToCheck >0 && numToCheck < 100) ? 0 : throw new IllegalArgumentException("Input must be a positive integer between 0 and 100");
-
-
+    private void validateInputValue(final int numToCheck, final int minValue, final int maxValue) {
+        if (numToCheck < minValue || numToCheck > maxValue) {
+            throw new IllegalArgumentException("Input must be a positive integer between 0 and 100");
+        }
     }
 
 }
+
 
 
 
