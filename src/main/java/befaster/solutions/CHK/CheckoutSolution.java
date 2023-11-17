@@ -71,6 +71,7 @@ public class CheckoutSolution {
 
                     if (offer.getFreeItem() != 0) {
                         int freeItemCount = Math.min(skuCounts.getOrDefault(offer.getFreeItem(), 0), specialOfferCount);
+
                         total += freeItemCount * prices.get(offer.getFreeItem());
                     }
 
@@ -108,9 +109,7 @@ public class CheckoutSolution {
             this.freeItem = freeItem;
         }
         public SpecialOffer(final int quantity, final int price) {
-            this.quantity = quantity;
-            this.price = price;
-            this.freeItem = 0;
+            this(quantity,price,(char) 0);
         }
 
         public int getQuantity() {
@@ -126,3 +125,4 @@ public class CheckoutSolution {
         }
     }
 }
+
