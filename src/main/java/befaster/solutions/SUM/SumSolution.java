@@ -6,8 +6,11 @@ import befaster.runner.SolutionNotImplementedException;
 public class SumSolution {
 
     public int compute(final int x, final int y) {
-        
+        //Validate the parameters
+        validateInputValue(x);
+        validateInputValue(y);
         throw new SolutionNotImplementedException();
     }
 
 }
+
