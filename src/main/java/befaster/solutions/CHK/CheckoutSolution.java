@@ -72,13 +72,14 @@ public class CheckoutSolution {
     private  static class SpecialOffer {
         private int quantity;
         private int price;
-        private int freeItem;
+        private char freeItem;
 
         /**
          * Creates a special offer given the quantity and price.
          *
          * @param quantity quantity of the Offer sku
          * @param price    price of the Offer sku
+         * @param freeItem free Item
          */
         public SpecialOffer(final int quantity, final int price, final char freeItem) {
             this.quantity = quantity;
@@ -86,6 +87,11 @@ public class CheckoutSolution {
             this.freeItem = freeItem;
         }
 
+
+        public SpecialOffer(final int quantity, final int price) {
+            this.quantity = quantity;
+            this.price = price;
+        }
 
         public int getQuantity() {
             return quantity;
@@ -95,10 +101,11 @@ public class CheckoutSolution {
             return price;
         }
 
-        public int getFreeItem() {
+        public char getFreeItem() {
             return freeItem;
         }
     }
 }
+
 
 
