@@ -50,7 +50,7 @@ public class CheckoutSolution {
                 int specialOfferCount = finalValue / offer.getQuantity();
                 int remainCount = finalValue % offer.getQuantity();
 
-                total += specialOfferCount + offer.getPrice() + remainCount * prices.get(sku);
+                total += specialOfferCount * offer.getPrice() + remainCount * prices.get(sku);
             } else {
                 total += finalValue * prices.get(sku);
             }
@@ -87,6 +87,7 @@ public class CheckoutSolution {
         }
     }
 }
+
 
 
 
