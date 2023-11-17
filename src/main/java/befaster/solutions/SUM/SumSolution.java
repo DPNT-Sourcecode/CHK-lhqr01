@@ -22,10 +22,12 @@ public class SumSolution {
     /**
      * @return
      */
-    private int validateInputValue(final int num) {
-        if()
+    private int validateInputValue(final int numToCheck) {
+        String result=(numToCheck >0 && numToCheck < 100) ? "The number " + numToCheck + "is valid"
+                : "The number " + numToCheck + "is not valid";
     }
 
 }
+
 
 
