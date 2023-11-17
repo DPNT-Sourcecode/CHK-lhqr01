@@ -52,7 +52,7 @@ public class CheckoutSolution {
                 int specialOfferCount = finalValue / offer.getQuantity();
                 int remainCount = finalValue % offer.getQuantity();
 
-                total += specialOfferCount * offer.getPrice() + remainCount * prices.get(sku);
+                total += specialOfferCount * offer.getPrice();
 
                 if (offer.getFreeItem() != 0) {
                     int freeItemCount = Math.min(skuCounts.getOrDefault(offer.getFreeItem(), 0), specialOfferCount);
@@ -108,6 +108,7 @@ public class CheckoutSolution {
         }
     }
 }
+
 
 
 
