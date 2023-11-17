@@ -2,6 +2,7 @@ package befaster.solutions.CHK;
 
 import befaster.runner.SolutionNotImplementedException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,7 @@ import java.util.Map;
 public class CheckoutSolution {
 
     static final Map<Character, Integer> prices = new HashMap<>();
-    static final Map<Character, SpecialOffer> specialOffers = new HashMap<>();
+    static final Map<Character, List<SpecialOffer>> specialOffers = new HashMap<>();
 
     // Add default values
     static {
@@ -19,10 +20,19 @@ public class CheckoutSolution {
         prices.put('D', 15);
         prices.put('E', 40);
 
-        specialOffers.put('A', new SpecialOffer(3,  130));
-        specialOffers.put('A', new SpecialOffer(5,  200));
-        specialOffers.put('B', new SpecialOffer(2, 45));
-        specialOffers.put('E', new SpecialOffer(2,40,'B'));
+        List<SpecialOffer> aOffers = new ArrayList<>();
+        aOffers.add(new SpecialOffer(3,130));
+        aOffers.add(new SpecialOffer(5,200));
+        specialOffers.put('A', aOffers);
+
+        List<SpecialOffer> bOffers = new ArrayList<>();
+        bOffers.add(new SpecialOffer(2,45));
+        specialOffers.put('B', bOffers);
+
+        List<SpecialOffer> eOffers = new ArrayList<>();
+        eOffers.add(new SpecialOffer(2,40, 'B'));
+        specialOffers.put('E', eOffers);
+
     }
 
     public Integer checkout(final String skus) {
@@ -116,11 +126,3 @@ public class CheckoutSolution {
         }
     }
 }
-
-
-
-
-
-
-
-
