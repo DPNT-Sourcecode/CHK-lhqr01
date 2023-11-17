@@ -27,7 +27,7 @@ public class CheckoutSolution {
             return 0;
         }
 
-        Map<Character, Integer> itemCounts = new HashMap<>();
+        Map<Character, Integer> skuCounts = new HashMap<>();
 
         for (char sku : skus.toCharArray()) {
             //Illegal input
@@ -35,11 +35,24 @@ public class CheckoutSolution {
                 return -1;
             }
 
-            itemCounts.put(sku, itemCounts.getOrDefault(sku, 0) + 1);
+            skuCounts.put(sku, skuCounts.getOrDefault(sku, 0) + 1);
         }
 
+        int total = 0;
+        
+        //Calculate basket price
+        for (Map.Entry<Character, Integer> entry : skuCounts.entrySet()) {
+            char sku = entry.getKey();
+            int finalValue = entry.getKey();
+
+            if(specialOffers.containsKey(sku)) {
+                SpecialOffer offer = specialOffers.get(sku);
+            }
+
+        
         
     }
 }
+
 
 
