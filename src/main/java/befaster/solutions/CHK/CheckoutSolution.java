@@ -45,14 +45,25 @@ public class CheckoutSolution {
             char sku = entry.getKey();
             int finalValue = entry.getKey();
 
-            if(specialOffers.containsKey(sku)) {
+            if (specialOffers.containsKey(sku)) {
                 SpecialOffer offer = specialOffers.get(sku);
+                int specialOfferCount = finalValue / offer.getQuantity();
+                int remainCount = finalValue % offer.getQuantity();
+
+                total += specialOfferCount + offer.getPrice() + remainCount * prices.get(sku);
+            } else {
+                total += count * prices.get(sku);
             }
+        }
+
+            return total
+    }
 
         
         
     }
 }
+
 
 
 
