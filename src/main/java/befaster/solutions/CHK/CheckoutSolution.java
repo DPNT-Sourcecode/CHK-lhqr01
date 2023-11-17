@@ -16,9 +16,11 @@ public class CheckoutSolution {
         prices.put('B', 30);
         prices.put('C', 20);
         prices.put('D', 15);
+        prices.put('E', 40);
 
         specialOffers.put('A', new SpecialOffer(3, 130));
         specialOffers.put('B', new SpecialOffer(2, 45));
+        specialOffers.put('E', new SpecialOffer(2,40,'B'));
     }
 
     public Integer checkout(final String skus) {
@@ -51,6 +53,11 @@ public class CheckoutSolution {
                 int remainCount = finalValue - specialOfferCount * offer.getQuantity();
 
                 total += specialOfferCount * offer.getPrice() + remainCount * prices.get(sku);
+
+                if (offer.getFreeItem() != 0 && skuCounts.getOrDefault(offer.getFreeItem(), 0) < specialOfferCount) {
+                    int freeItemCount = specialOfferCount * offer.getFreeItem();
+                    skuCounts.put(offer.getFreeItem(), skuCounts.getOrDefault(offer.getFreeItem(), 0) + freeItemCount);
+                }
             } else {
                 total += finalValue * prices.get(sku);
             }
@@ -87,3 +94,4 @@ public class CheckoutSolution {
         }
     }
 }
+
