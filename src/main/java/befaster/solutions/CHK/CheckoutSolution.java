@@ -18,8 +18,8 @@ public class CheckoutSolution {
         prices.put('D', 15);
         prices.put('E', 40);
 
-        specialOffers.put('A', new SpecialOffer(3, 1, 130));
-        specialOffers.put('B', new SpecialOffer(2, 1, 45 ));
+        specialOffers.put('A', new SpecialOffer(3,  130));
+        specialOffers.put('B', new SpecialOffer(2, 45));
         specialOffers.put('E', new SpecialOffer(2,40,'B'));
     }
 
@@ -120,11 +120,3 @@ public class CheckoutSolution {
         }
     }
 }
-
-
-
-
-
-
-
-
