@@ -52,13 +52,13 @@ public class CheckoutSolution {
             if (specialOffers.containsKey(sku)) {
                 SpecialOffer offer = specialOffers.get(sku);
                 int specialOfferCount = finalValue / offer.getQuantity();
-                int remainCount = finalValue - specialOfferCount * offer.getQuantity();
+                int remainCount = finalValue % offer.getQuantity();
 
                 total += specialOfferCount * offer.getPrice() + remainCount * prices.get(sku);
 
-                if (offer.getFreeItem() != 0 && skuCounts.getOrDefault(offer.getFreeItem(), 0) < specialOfferCount) {
-                    int freeItemCount = specialOfferCount * offer.getFreeItem();
-                    skuCounts.put(offer.getFreeItem(), skuCounts.getOrDefault(offer.getFreeItem(), 0) + freeItemCount);
+                if (offer.getFreeItem() != 0) {
+                    int freeItemCount = Math.min(skuCounts.getOrDefault(offer.getFreeItem(), 0 ), specialOfferCount);
+                    skuCounts.put(offer.getFreeItem(), skuCounts.getOrDefault(offer.getFreeItem(), 0) - freeItemCount);
                 }
             } else {
                 total += finalValue * prices.get(sku);
@@ -108,6 +108,7 @@ public class CheckoutSolution {
         }
     }
 }
+
 
 
 
