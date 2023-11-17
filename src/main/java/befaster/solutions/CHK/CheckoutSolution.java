@@ -55,9 +55,11 @@ public class CheckoutSolution {
                 total += specialOfferCount * offer.getPrice() + remainCount * prices.get(sku);
 
                 if (offer.getFreeItem() != 0) {
-                    int freeItemCount =specialOfferCount * offer.getQuantity();
-                    
+                    int freeItemCount = Math.min(skuCounts.getOrDefault(offer.getFreeItem(), 0), specialOfferCount);
+                    total += freeItemCount * prices.get(offer.getFreeItem());
                 }
+
+                total += finalValue * prices.get(sku);
             } else {
                 total += finalValue * prices.get(sku);
             }
@@ -106,5 +108,6 @@ public class CheckoutSolution {
         }
     }
 }
+
 
 
