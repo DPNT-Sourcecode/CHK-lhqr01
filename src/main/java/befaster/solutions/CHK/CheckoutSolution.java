@@ -56,7 +56,7 @@ public class CheckoutSolution {
 
                 if (offer.getFreeItem() != 0) {
                     int freeItemCount =specialOfferCount * offer.getQuantity();
-                    skuCounts.put(offer.getFreeItem(), skuCounts.getOrDefault(offer.getFreeItem(), 0) - freeItemCount);
+                    
                 }
             } else {
                 total += finalValue * prices.get(sku);
@@ -106,4 +106,5 @@ public class CheckoutSolution {
         }
     }
 }
+
 
