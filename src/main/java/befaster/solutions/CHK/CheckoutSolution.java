@@ -7,4 +7,3 @@ public class CheckoutSolution {
         private static final Map<Character, Integer>
     }
 }
-
