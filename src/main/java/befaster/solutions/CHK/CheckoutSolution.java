@@ -43,7 +43,7 @@ public class CheckoutSolution {
         //Calculate basket price
         for (Map.Entry<Character, Integer> entry : skuCounts.entrySet()) {
             char sku = entry.getKey();
-            int finalValue = entry.getKey();
+            int finalValue = entry.getValue();
 
             if (specialOffers.containsKey(sku)) {
                 SpecialOffer offer = specialOffers.get(sku);
@@ -87,6 +87,7 @@ public class CheckoutSolution {
         }
     }
 }
+
 
 
 
