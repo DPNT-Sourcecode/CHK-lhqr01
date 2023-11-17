@@ -7,8 +7,8 @@ import java.util.Map;
 
 public class CheckoutSolution {
 
-    final Map<Character, Integer> prices = new HashMap<>();
-    final Map<Character, SpecialOffer> specialOffers = new HashMap<>();
+    static final Map<Character, Integer> prices = new HashMap<>();
+    static final Map<Character, SpecialOffer> specialOffers = new HashMap<>();
 
     // Add default values
     static {
@@ -52,17 +52,42 @@ public class CheckoutSolution {
 
                 total += specialOfferCount + offer.getPrice() + remainCount * prices.get(sku);
             } else {
-                total += count * prices.get(sku);
+                total += finalValue * prices.get(sku);
             }
         }
 
-            return total
+        return total;
     }
 
-        
-        
+    /**
+     * Special Offer Class for each sku.
+     */
+    private  static class SpecialOffer {
+        private int quantity;
+        private int price;
+
+        /**
+         * Creates a special offer given the quantity and price.
+         *
+         * @param quantity quantity of the Offer sku
+         * @param price    price of the Offer sku
+         */
+        public SpecialOffer(final int quantity, final int price) {
+            this.quantity = quantity;
+            this.price = price;
+        }
+
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public int getPrice() {
+            return price;
+        }
     }
 }
+
 
 
 
